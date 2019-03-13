@@ -4,7 +4,7 @@ import "fmt"
 
 type person struct {
 	name string
-	age int 
+	age  int
 }
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	fmt.Println(person{name: "Jack Daniels"})
 	fmt.Println(&person{name: "Kevin Levrone", age: 40})
 
-	s := person{name:"Vasiliy", age: 49}
+	s := person{name: "Vasiliy", age: 49}
 	s.age = 23
 	fmt.Println(s.age)
 	sp := &s

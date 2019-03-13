@@ -7,14 +7,14 @@ func sum(nums ...int) (total int) {
 	for _, num := range nums {
 		total += num
 	}
-	
+
 	return
 }
 
 func main() {
-	sum(1,3)
+	sum(1, 3)
 
-	nums := []int{1,2,44,3}
+	nums := []int{1, 2, 44, 3}
 	fmt.Println(sum(nums...))
-	
+
 }
