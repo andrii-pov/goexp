@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"time"
 )
 
 func f1(arg int) (int, error) {
@@ -15,6 +16,11 @@ func f1(arg int) (int, error) {
 type argError struct {
 	arg  int
 	prob string
+}
+
+type MyError struct {
+	When time.Time
+	What string
 }
 
 func (e *argError) Error() string {
@@ -49,5 +55,21 @@ func main() {
 	if ae, ok := e.(*argError); ok {
 		fmt.Println(ae.arg)
 		fmt.Println(ae.prob)
+	}
+
+	if err := run(); err != nil {
+		fmt.Println(err)
+	}
+}
+
+func (e *MyError) Error() string { // we have: type error interface { Error() string }
+	// so this automatically implements the error interface for MyError pointer type
+	return fmt.Sprintf("at %v, %s", e.When, e.What)
+}
+
+func run() error {
+	return &MyError{
+		time.Now(),
+		"it didn't work LOL",
 	}
 }

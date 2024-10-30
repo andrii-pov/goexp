@@ -25,4 +25,16 @@ func main() {
 	ssss.age = 11
 	fmt.Println(ssss.age)
 	fmt.Println(s.age)
+
+	v1 := person{name: "Daria"} // another field is implicitly set to 0
+	fmt.Println("v1: ", v1)
+
+	v2 := person{}
+	fmt.Println("v2: ", v2) // both fields are implicitly set to "" or 0
+
+	v3 := &person{"Vlad", 33}
+	fmt.Println("v3: ", v3)
+
+	v3.age = 45
+	fmt.Println("v3 updated: ", v3)
 }

@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// note that timeouts are ignored when another case is ready
+
 func main() {
 	c1 := make(chan string, 1)
 

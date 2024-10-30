@@ -42,8 +42,9 @@ func main() {
 	m["k2"] = 13
 	fmt.Println("map:", m)
 
-	_, prs := m["k2"]
+	val, prs := m["k2"]
 	fmt.Println("prs:", prs)
+	fmt.Println("Val: ", val)
 	nums := []int{2, 3, 4}
 	sum := 0
 	for _, num := range nums {
