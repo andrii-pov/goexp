@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	// safe way to use goroutines with scope
 	var wg sync.WaitGroup
 
 	sampleSlice := []int{1, 2, 3, 4, 5}
@@ -16,14 +17,15 @@ func main() {
 			defer wg.Done()
 			fmt.Printf("Value: %d at index: %d\n", val, i)
 		}(i, val)
-		go func() {
-			fmt.Printf("NO ARG Value: %d at index: %d\n", val, i)
-		}()
 	}
 	wg.Wait()
 
-	var wg2 sync.WaitGroup
+	fmt.Println("That's all for wg folks!")
 
+	// unsafe way to use goroutines with scope
+
+	var wg2 sync.WaitGroup
+	
 	for i, val := range []int{1, 2, 3, 4, 5} {
 		wg2.Add(1)
 		go func() {
