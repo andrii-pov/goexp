@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-)
-
 func repeatFn(
 	done <-chan interface{},
 	fn func() interface{},
@@ -41,14 +36,14 @@ func take(
 	return takeStream
 }
 
-func main() {
-	done := make(chan interface{})
-	defer close(done)
-	randomF := func() interface{} {
-		return rand.Intn(100)
-	}
-
-	for num := range take(done, repeatFn(done, randomF), 10) {
-		fmt.Println(num)
-	}
-}
+//func main() {
+//	done := make(chan interface{})
+//	defer close(done)
+//	randomF := func() interface{} {
+//		return rand.Intn(100)
+//	}
+//
+//	for num := range take(done, repeatFn(done, randomF), 10) {
+//		fmt.Println(num)
+//	}
+//}
